@@ -1,4 +1,13 @@
 package com.example.xposedmudulehook;
+import android.app.Activity;
+import android.app.Dialog;
+import android.inputmethodservice.InputMethodService;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
@@ -26,16 +35,28 @@ public class HookInputState implements IXposedHookLoadPackage  {
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                         // 这里的调用在正常函数调用之后执行
                         XposedBridge.log(lpparam.packageName + "弹出了软键盘");
+                        InputMethodService ims = (InputMethodService)param.thisObject;
+                        Dialog window = ims.getWindow();//?输入法的Dialog
+                        Window window1 = window.getWindow();
+
+
+
+
                     }
                 });
 
 
         XposedHelpers.findAndHookMethod("android.inputmethodservice.InputMethodService",lpparam.classLoader,"onWindowHidden",new XC_MethodHook() {
-                    @Override
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+
+            }
+
+            @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                         // 这里的调用在正常函数调用之后执行
                         XposedBridge.log(lpparam.packageName + "隐藏了软键盘");
-
+                        
 
                     }
                 });
