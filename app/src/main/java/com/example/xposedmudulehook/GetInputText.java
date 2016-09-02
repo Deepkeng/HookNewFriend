@@ -2,7 +2,6 @@ package com.example.xposedmudulehook;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
@@ -23,7 +22,7 @@ public class GetInputText implements IXposedHookLoadPackage{
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 CharSequence text = (CharSequence) param.args[0];
                 String s = text.toString();
-                XposedBridge.log("Text"+s);
+
             }
         });
     }
