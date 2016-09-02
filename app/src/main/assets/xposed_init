@@ -1,2 +1,3 @@
 com.example.xposedmudulehook.HookInputState
 com.example.xposedmudulehook.GetEditTextContent
+com.example.xposedmudulehook.GetInputText
