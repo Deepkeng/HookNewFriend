@@ -1,12 +1,7 @@
 package com.example.xposedmudulehook;
-import android.app.Activity;
 import android.app.Dialog;
 import android.inputmethodservice.InputMethodService;
-import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -38,9 +33,6 @@ public class HookInputState implements IXposedHookLoadPackage  {
                         InputMethodService ims = (InputMethodService)param.thisObject;
                         Dialog window = ims.getWindow();//?输入法的Dialog
                         Window window1 = window.getWindow();
-
-
-
 
                     }
                 });
