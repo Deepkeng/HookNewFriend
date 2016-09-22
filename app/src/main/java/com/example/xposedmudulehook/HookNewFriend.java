@@ -55,6 +55,7 @@ public class HookNewFriend implements IXposedHookLoadPackage  {
                             JSONObject object = new JSONObject();
                             object.put("contentNickname",contentNickname);
                             object.put("contentFromUsername",contentFromUsername);
+                            XposedBridge.log("object:"+object);
                            // queue.put(object.toString());
                         }
 
