@@ -23,7 +23,7 @@ public class HookNewFriend implements IXposedHookLoadPackage  {
             return;
         }
 
-       // new Thread(new XposedClientThread(queue)).start();
+
 
         XposedBridge.log("找到微信包 ： " + lpparam.packageName);
         //找到要Hook的类名和函数，创建自己的类
@@ -56,7 +56,8 @@ public class HookNewFriend implements IXposedHookLoadPackage  {
                             object.put("contentNickname",contentNickname);
                             object.put("contentFromUsername",contentFromUsername);
                             XposedBridge.log("object:"+object);
-                           // queue.put(object.toString());
+
+                            new Thread(new XposedClientSender(object.toString())).start();
                         }
 
                     }
